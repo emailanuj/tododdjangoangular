@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Demo Page</title>
+    {% load static %}
+</head>
+<body ng-app="toDo" ng-controller="toDoController">
+<!-- Importing Angular --->
+<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.7.9/angular.min.js">
+
+</script>
+<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+<script src="{% static 'js/todo.js' %}">
+</script>
+<div class="card align-self-center mr-3" style="width:50%; margin-left:200px;">
+  <h5 class="card-header">ToDo APP</h5>
+  <div class="card-body">
+      <form class="" ng-submit="todoAdd()" method="post">
+        <input type="text" ng-model="todoInput" placeholder="Add a new to do">
+        <button type="submit" ng-click="saveData()" class="btn btn-primary">Submit</button>
+      </form>
+      <br>
+    <div class="card" style="width: 18rem;">
+      <ul class="list-group list-group-flush" ng-repeat="todo in todoList">
+        <li class="list-group-item"><input type="checkbox" ng-model="todo.done">&nbsp;<span ng-bind="todo.todoText"></li></span>
+      </ul>
+    </div>
+    <p><br>
+        <button ng-click="remove()" class="btn btn-primary">Done</button>
+    </p>
+  </div>
+</div>
+</body>
+</html>
